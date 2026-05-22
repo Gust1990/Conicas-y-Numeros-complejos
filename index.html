@@ -2,8 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cónicas FACET - App de Estudio Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cónicas FACET Pro</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23e74c3c'/%3E%3Ctext x='50' y='50' font-size='55' text-anchor='middle' dominant-baseline='central'%3E📐%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23e74c3c'/%3E%3Ctext x='50' y='50' font-size='55' text-anchor='middle' dominant-baseline='central'%3E📐%3C/text%3E%3C/svg%3E">
+
     <style>
         /* VARIABLES DE TEMA (CLARO/OSCURO) */
         :root {
@@ -263,45 +272,44 @@
             border-radius: 4px;
         }
 
-        /* =========================================
-           MEJORAS: ECUACIONES, FRACCIONES Y RAÍCES 
-           ========================================= */
+        /* ECUACIONES VERTICALES Y FRACCIONES BLINDADAS */
         .eq {
             display: inline-flex;
             align-items: center;
             font-family: 'Courier New', monospace;
             font-weight: bold;
             font-size: 1.1em;
-            flex-wrap: wrap;
-            gap: 4px;
             vertical-align: middle;
+            margin: 0 2px;
         }
         .frac {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 0 4px;
             vertical-align: middle;
+            margin: 0 3px;
         }
         .num {
             border-bottom: 1.5px solid var(--text-main);
-            padding: 2px 4px;
+            padding: 0 4px;
             width: 100%;
             text-align: center;
             box-sizing: border-box;
-            line-height: 1.1;
+            line-height: 1;
+            display: block;
         }
         .den {
-            padding: 2px 4px;
+            padding: 2px 4px 0 4px;
             width: 100%;
             text-align: center;
             box-sizing: border-box;
-            line-height: 1.1;
+            line-height: 1;
+            display: block;
         }
-        .signo { margin: 0 2px; }
+        .signo { margin: 0 4px; vertical-align: middle; }
 
-        /* Novedad: Raíces Completas */
+        /* Estilos Raíces */
         .raiz {
             display: inline-flex;
             align-items: center;
@@ -628,7 +636,8 @@
                 </div>
                 <div class="veredicto falso">FALSO</div>
                 <div class="justificacion">
-                    <strong>Justificación:</strong> Para que la ecuación general represente una circunferencia real, el radio debe ser mayor a cero. Según la teoría, el radio se calcula como <code>r = (1/2)</code><span class="raiz"><span class="raiz-content">L&sup2; + M&sup2; - 4N</span></span>. <br><br>
+                    <strong>Justificación:</strong> Para que la ecuación general represente una circunferencia real, el radio debe ser mayor a cero. Según la teoría, el radio se calcula como 
+                    <div class="eq">r = (1/2)<span class="raiz"><span class="raiz-content">L&sup2; + M&sup2; - 4N</span></span></div>. <br><br>
                     Por lo tanto, es condición excluyente que el discriminante sea positivo: <strong>L&sup2; + M&sup2; - 4N &gt; 0</strong>. <br>
                     - Si <code>L&sup2; + M&sup2; - 4N = 0</code>, la ecuación representa un único punto.<br>
                     - Si <code>L&sup2; + M&sup2; - 4N &lt; 0</code>, no hay lugar geométrico.
@@ -748,8 +757,8 @@
                 </div>
                 <div class="veredicto verdadero">VERDADERO</div>
                 <div class="justificacion">
-                    <strong>Justificación:</strong> La ecuación canónica de la elipse es <code>x&sup2;/a&sup2; + y&sup2;/b&sup2; = 1</code>. <br><br>
-                    Si en este caso particular se cumple que <code>a = b</code>, podemos sustituir <code>b</code> por <code>a</code> obteniendo: <code>x&sup2;/a&sup2; + y&sup2;/a&sup2; = 1</code>.<br>
+                    <strong>Justificación:</strong> La ecuación canónica de la elipse es <div class="eq"><div class="frac"><span class="num">x&sup2;</span><span class="den">a&sup2;</span></div> + <div class="frac"><span class="num">y&sup2;</span><span class="den">b&sup2;</span></div> = 1</div>. <br><br>
+                    Si en este caso particular se cumple que <code>a = b</code>, podemos sustituir <code>b</code> por <code>a</code> obteniendo: <div class="eq"><div class="frac"><span class="num">x&sup2;</span><span class="den">a&sup2;</span></div> + <div class="frac"><span class="num">y&sup2;</span><span class="den">a&sup2;</span></div> = 1</div>.<br><br>
                     Multiplicando toda la ecuación por <code>a&sup2;</code> (que es una constante positiva), llegamos a <code>x&sup2; + y&sup2; = a&sup2;</code>. Esta expresión es matemáticamente idéntica a la ecuación canónica de una circunferencia con centro en el origen y radio <code>r = a</code>. En este caso límite, la excentricidad se vuelve 0 y los dos focos colapsan en el centro geométrico.
                 </div>
             </div>
